@@ -1,149 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MATLAB Lab Dashboard</title>
+<title>MATLAB Code Dashboard</title>
 
 <style>
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-        font-family: Consolas, monospace;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Consolas, monospace;
+}
+
+body{
+    background:#1e1e1e;
+    color:white;
+    overflow:hidden;
+}
+
+/* TOP BAR */
+
+.topbar{
+    width:100%;
+    height:60px;
+    background:#2d2d30;
+    border-bottom:2px solid #00ff99;
+    display:flex;
+    align-items:center;
+    padding-left:20px;
+    font-size:22px;
+    font-weight:bold;
+    color:#00ff99;
+    letter-spacing:1px;
+}
+
+/* MAIN */
+
+.container{
+    display:flex;
+    height:calc(100vh - 60px);
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:320px;
+    background:#252526;
+    border-right:2px solid #333;
+    padding:20px;
+    overflow-y:auto;
+}
+
+.sidebar h2{
+    color:#00bfff;
+    margin-bottom:20px;
+    font-size:24px;
+}
+
+.file-btn{
+    display:block;
+    text-decoration:none;
+    background:#333;
+    color:white;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:10px;
+    border:1px solid #444;
+    transition:0.3s;
+    font-size:15px;
+}
+
+.file-btn:hover{
+    background:#007acc;
+    transform:translateX(5px);
+    box-shadow:0 0 15px #007acc;
+}
+
+/* MAIN WINDOW */
+
+.main{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.matlab-window{
+    width:90%;
+    max-width:950px;
+    background:#111;
+    border:2px solid #444;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 0 25px rgba(0,0,0,0.7);
+}
+
+.window-header{
+    background:#0078d7;
+    color:white;
+    padding:12px;
+    font-weight:bold;
+    font-size:16px;
+}
+
+.window-body{
+    padding:30px;
+    color:#00ff66;
+    font-size:18px;
+    line-height:1.8;
+    min-height:420px;
+}
+
+.cursor{
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
     }
+}
 
-    body{
-        background:#1e1e1e;
-        color:white;
-        height:100vh;
-        overflow:hidden;
-    }
+/* SCROLLBAR */
 
-    /* TOP BAR */
+::-webkit-scrollbar{
+    width:8px;
+}
 
-    .topbar{
-        height:55px;
-        background:#2b2b2b;
-        border-bottom:2px solid #0f9d58;
-        display:flex;
-        align-items:center;
-        padding:0 20px;
-        font-size:20px;
-        font-weight:bold;
-        color:#00ff9d;
-        letter-spacing:1px;
-    }
+::-webkit-scrollbar-thumb{
+    background:#00bfff;
+    border-radius:10px;
+}
 
-    /* MAIN LAYOUT */
-
-    .container{
-        display:flex;
-        height:calc(100vh - 55px);
-    }
-
-    /* SIDEBAR */
-
-    .sidebar{
-        width:280px;
-        background:#252526;
-        border-right:2px solid #333;
-        padding:20px 15px;
-        overflow-y:auto;
-    }
-
-    .sidebar h2{
-        color:#00d4ff;
-        margin-bottom:20px;
-        font-size:22px;
-    }
-
-    .pdf-btn{
-        display:block;
-        width:100%;
-        text-decoration:none;
-        margin-bottom:15px;
-        padding:14px;
-        background:#333;
-        border:1px solid #444;
-        border-radius:8px;
-        color:white;
-        transition:0.3s;
-        font-size:15px;
-    }
-
-    .pdf-btn:hover{
-        background:#00aaff;
-        transform:translateX(5px);
-        box-shadow:0 0 10px #00aaff;
-    }
-
-    /* MAIN CONTENT */
-
-    .main{
-        flex:1;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        flex-direction:column;
-        background:#1e1e1e;
-        padding:20px;
-    }
-
-    .matlab-window{
-        width:90%;
-        max-width:900px;
-        background:#101010;
-        border:2px solid #444;
-        border-radius:10px;
-        overflow:hidden;
-        box-shadow:0 0 20px rgba(0,0,0,0.6);
-    }
-
-    .window-header{
-        background:#0078d7;
-        padding:12px;
-        color:white;
-        font-weight:bold;
-    }
-
-    .window-body{
-        padding:30px;
-        min-height:350px;
-        color:#00ff66;
-        font-size:18px;
-        line-height:1.8;
-    }
-
-    .cursor{
-        animation: blink 1s infinite;
-    }
-
-    @keyframes blink{
-        50%{
-            opacity:0;
-        }
-    }
-
-    /* SCROLLBAR */
-
-    ::-webkit-scrollbar{
-        width:8px;
-    }
-
-    ::-webkit-scrollbar-thumb{
-        background:#00aaff;
-        border-radius:10px;
-    }
 </style>
-
 </head>
 
 <body>
 
 <div class="topbar">
-    MATLAB LAB UI
+    MATLAB CODE LAB ENVIRONMENT
 </div>
 
 <div class="container">
@@ -152,49 +151,53 @@
 
     <div class="sidebar">
 
-        <h2>PDF Experiments</h2>
+        <h2>MATLAB Files</h2>
 
-        <a class="pdf-btn" href="exp 1.docx.pdf" target="_blank">
-            Experiment 1 - Matrix Operations
+        <a href="lab1_matlab.m" class="file-btn" target="_blank">
+            LAB 1 - Matrix and Vector Operations
         </a>
 
-        <a class="pdf-btn" href="exp 2 plot basic and membership.pdf" target="_blank">
-            Experiment 2 - Membership Functions
+        <a href="lab2_fuzzylogic.m" class="file-btn" target="_blank">
+            LAB 2 - Fuzzy Logic & Membership Functions
         </a>
 
-        <a class="pdf-btn" href="exp 3 analyze Yager fuzzy.pdf" target="_blank">
-            Experiment 3 - Yager Fuzzy Analysis
+        <a href="lab3fuzzy.m" class="file-btn" target="_blank">
+            LAB 3 - Yager Union & Intersection
         </a>
 
-        <a class="pdf-btn" href="exp 4 plotting c means clustering.pdf" target="_blank">
-            Experiment 4 - Fuzzy C Means Clustering
+        <a href="lab4fuzzy.m" class="file-btn" target="_blank">
+            LAB 4 - Fuzzy C Means Clustering
         </a>
 
-        <a class="pdf-btn" href="fuzzy svm.pdf" target="_blank">
-            Experiment 5 - Fuzzy SVM
+        <a href="lab5fuzzy.m" class="file-btn" target="_blank">
+            LAB 5 - Fuzzy SVM
         </a>
 
     </div>
 
-    <!-- MAIN SCREEN -->
+    <!-- MAIN CONTENT -->
 
     <div class="main">
 
         <div class="matlab-window">
 
             <div class="window-header">
-                Command Window
+                MATLAB Command Window
             </div>
 
             <div class="window-body">
 
-                >> MATLAB Fuzzy Logic Lab Dashboard Loaded...<br><br>
+>> Initializing MATLAB Environment...<br><br>
 
-                >> Select an experiment from the left panel.<br><br>
+>> Loading Fuzzy Logic Laboratory Files...<br><br>
 
-                >> PDFs will open in a new tab.<br><br>
+>> System Ready.<br><br>
 
-                >> Ready for execution...<span class="cursor">|</span>
+>> Click any experiment file from the left panel.<br><br>
+
+>> MATLAB source code will open in a new tab.<br><br>
+
+>> Waiting for user input<span class="cursor">|</span>
 
             </div>
 
